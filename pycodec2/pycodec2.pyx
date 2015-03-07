@@ -31,12 +31,6 @@ cdef class Codec2:
     if self._c_codec2_state is not NULL:
       codec2_destroy(self._c_codec2_state)
 
-  def bits_per_frame(self):
-    return codec2_bits_per_frame(self._c_codec2_state)
-
-  def samples_per_frame(self):
-    return codec2_samples_per_frame(self._c_codec2_state)
-
   def encode(self, cnp.ndarray[SHORT_DTYPE_t, ndim=1] speech_in):
     '''Encode given ndarray of samples to bits represented as a byte array.'''
     assert len(speech_in) % self.samples_per_frame() == 0
@@ -67,6 +61,12 @@ cdef class Codec2:
         bits,
         ber_est)
     return speech_out
+
+  def samples_per_frame(self):
+    return codec2_samples_per_frame(self._c_codec2_state)
+
+  def bits_per_frame(self):
+    return codec2_bits_per_frame(self._c_codec2_state)
 
   def set_lpc_post_filter(self,
       int enable,
