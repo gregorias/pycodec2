@@ -10,4 +10,11 @@ Run:
 
 to install the library.
 
+Documentation
+=============
+pycodec2 uses sphinx for documentation generation. To generate pydocs run:
+    
+    cd docs
+    make html
 
+This will create HTML documentation in docs/_build/html/
