@@ -1,6 +1,7 @@
 Overview
 ========
-This is a Python interface for codec2 library.
+This is a Cython wrapper for codec2 library. More about codec2 can be found
+[here](http://www.rowetel.com/blog/?page_id=452).
 
 Installation
 ============

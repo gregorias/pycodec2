@@ -9,7 +9,20 @@ ext_modules=[
 ]
 
 setup(
-  name = "Pycodec2",
+  name = "pycodec2",
+  packages = ['pycodec2'],
+  version = '1.0',
+  description = 'Cython wrapper for codec2',
+  author = 'Grzegorz Milka',
+  author_email = 'grzegorzmilka@gmail.com',
+  url = 'https://github.com/gregorias/pycodec2',
+  download_url = 'https://github.com/gregorias/pycodec2/tarball/1.0',
+  keywords = ['codec2', 'audio', 'voice'],
+  classifiers = ['Topic :: Multimedia :: Sound/Audio :: Speech',
+                 'License :: OSI Approved :: BSD License',
+                 'Programming Language :: Python :: 2',
+                 'Programming Language :: Python :: 3',
+                 ],
   cmdclass = {"build_ext": build_ext},
   ext_modules = ext_modules
 )
