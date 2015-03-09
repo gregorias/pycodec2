@@ -19,3 +19,9 @@ pycodec2 uses sphinx for documentation generation. To generate pydocs run:
     make html
 
 This will create HTML documentation in docs/_build/html/
+
+Remarks
+=======
+
+This library is considered complete. Please notify me or send a pull request on
+Github if you notice any bugs.
