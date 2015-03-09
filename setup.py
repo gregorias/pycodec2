@@ -2,7 +2,9 @@ from distutils.core import setup
 from distutils.extension import Extension
 from Cython.Distutils import build_ext
 
-ext_modules=[
+VERSION = '1.0.2'
+
+ext_modules = [
     Extension("pycodec2",
               [
                   "pycodec2/codec2.pxd",
@@ -14,12 +16,12 @@ ext_modules=[
 setup(
   name = "pycodec2",
   packages = ['pycodec2'],
-  version = '1.0.1',
+  version = VERSION,
   description = 'Cython wrapper for codec2',
   author = 'Grzegorz Milka',
   author_email = 'grzegorzmilka@gmail.com',
   url = 'https://github.com/gregorias/pycodec2',
-  download_url = 'https://github.com/gregorias/pycodec2/tarball/1.0',
+  download_url = 'https://github.com/gregorias/pycodec2/tarball/' + VERSION,
   keywords = ['codec2', 'audio', 'voice'],
   classifiers = ['Topic :: Multimedia :: Sound/Audio :: Speech',
                  'License :: OSI Approved :: BSD License',
