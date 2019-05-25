@@ -1,5 +1,7 @@
 from codec2 cimport *
 
+import math
+
 import numpy as np
 cimport numpy as cnp
 
@@ -17,7 +19,7 @@ _modes = {
 
 cdef class Codec2:
   '''Wrapper for codec2 state and its functions.
-  
+
   Initialization method expects an integer defining expected bitrate per
   second.'''
   cdef CODEC2 *_c_codec2_state
@@ -32,26 +34,28 @@ cdef class Codec2:
       codec2_destroy(self._c_codec2_state)
 
   def encode(self, cnp.ndarray[SHORT_DTYPE_t, ndim=1] speech_in):
-    '''Encode given ndarray of samples to bits represented as a byte array.'''
+    '''Encode samples with codec2.
+
+    Encode the given ndarray of samples to bits represented as a byte array.'''
     assert len(speech_in) % self.samples_per_frame() == 0
     frames = len(speech_in) // self.samples_per_frame()
     bit_count = frames * self.bits_per_frame()
-    bits = b'\x00' * (bit_count // 8)
+    bits = b'\x00' * int(math.ceil(bit_count / 8.0))
     codec2_encode(self._c_codec2_state, bits, <short *>speech_in.data)
     return bits
 
   def decode(self, bytes bits):
-    '''Decode a byte array into a ndarray of samples'''
-    assert (len(bits) * 8) % self.bits_per_frame() == 0
+    '''Decode a byte array into an ndarray of samples'''
+    assert (len(bits) * 8) >= self.bits_per_frame()
     cdef cnp.ndarray[SHORT_DTYPE_t, ndim=1] speech_out
-    frames = (len(bits) * 8) // self.bits_per_frame()
+    frames = int(math.floor((len(bits) * 8.0) / self.bits_per_frame()))
     sample_count = frames * self.samples_per_frame()
     speech_out = np.empty(sample_count, dtype=np.int16, order='C')
     codec2_decode(self._c_codec2_state, <short *>speech_out.data, bits)
     return speech_out
 
   def decode_ber(self, bytes bits, float ber_est):
-    assert (len(bits) * 8) % self.bits_per_frame() == 0
+    assert (len(bits) * 8) >= self.bits_per_frame()
     cdef cnp.ndarray[SHORT_DTYPE_t, ndim=1] speech_out
     frames = (len(bits) * 8) // self.bits_per_frame()
     sample_count = frames * self.samples_per_frame()
