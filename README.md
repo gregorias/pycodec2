@@ -5,6 +5,13 @@ This is a Cython wrapper for codec2 library. More about codec2 can be found
 
 Installation
 ============
+
+## Prerequisites
+
+pycodec2 requires [codec2](https://github.com/drowe67/codec2). The easiest way to install codec2 on Linux is to use the distro's package-manager, e.g. `pacman -Syuu codec2`, so that codec2's assets land in standard, searchable directories for `python setup.py` to use.
+
+## Instructions
+
 Run:
 
     python setup.py install
