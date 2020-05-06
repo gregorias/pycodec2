@@ -1,6 +1,7 @@
 from distutils.core import setup
 from distutils.extension import Extension
 from Cython.Distutils import build_ext
+import numpy as np 
 
 VERSION = '1.0.2'
 
@@ -10,6 +11,7 @@ ext_modules = [
                   "pycodec2/codec2.pxd",
                   "pycodec2/pycodec2.pyx",
               ],
+              include_dirs=[np.get_include()],
               libraries=["codec2"]) # Unix-like specific
 ]
 
