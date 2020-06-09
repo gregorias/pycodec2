@@ -4,11 +4,13 @@ import math
 
 import numpy as np
 cimport numpy as cnp
-
 ctypedef cnp.int16_t SHORT_DTYPE_t
 ctypedef cnp.int_t INT_DTYPE_t
 
 _modes = {
+    450  : CODEC2_MODE_450,
+    451  : CODEC2_MODE_450PWB, #Decode only! Encode with 450, decode with 451 to use
+    700  : CODEC2_MODE_700C,
     1200 : CODEC2_MODE_1200,
     1300 : CODEC2_MODE_1300,
     1400 : CODEC2_MODE_1400,
