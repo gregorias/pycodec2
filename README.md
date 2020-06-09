@@ -50,5 +50,7 @@ Remarks
 Codec2 assumes that input files: use 8kHz bitrate, 16-bit width samples, and a
 single channel.
 
+Look for `_modes` in `pycodec2/pycodec2.pyx` for a list of currently supported modes.
+
 This library is considered complete. Please notify me or send a pull request on
 Github if you notice any bugs.
