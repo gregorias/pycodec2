@@ -3,7 +3,7 @@ from distutils.extension import Extension
 from Cython.Distutils import build_ext
 import numpy as np
 
-VERSION = '1.0.3'
+VERSION = '1.0.4'
 
 ext_modules = [
     Extension("pycodec2",
@@ -21,6 +21,7 @@ setup(
   version = VERSION,
   description = 'A Cython wrapper for codec2',
   long_description = open('README.md').read(),
+  long_description_content_type = 'text/markdown',
   author = 'Grzegorz Milka',
   author_email = 'grzegorzmilka@gmail.com',
   url = 'https://github.com/gregorias/pycodec2',
