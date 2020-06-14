@@ -6,6 +6,7 @@ verify_ssl = true
 [dev-packages]
 grip = "*"
 Cython = "*"
+twine = "*"
 
 [packages]
 
