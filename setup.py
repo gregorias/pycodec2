@@ -20,6 +20,7 @@ setup(
   packages = ['pycodec2'],
   version = VERSION,
   description = 'A Cython wrapper for codec2',
+  long_description = open('README.md').read(),
   author = 'Grzegorz Milka',
   author_email = 'grzegorzmilka@gmail.com',
   url = 'https://github.com/gregorias/pycodec2',
