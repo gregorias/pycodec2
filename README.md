@@ -60,6 +60,21 @@ Now you can listen to `output.wav`.
 For a list of currently supported modes, look for `_modes` in
 `pycodec2/pycodec2.pyx`.
 
+For Developers
+==============
+
+## How to Upload to PyPI
+
+1. [Run `build_ext`](https://stackoverflow.com/a/4515279/915552)
+
+       python setup.py build_ext
+2. [Build a wheel](https://packaging.python.org/guides/distributing-packages-using-setuptools/#pure-python-wheels)
+
+       python setup.py bdist
+3. [Upload](https://packaging.python.org/guides/distributing-packages-using-setuptools/#uploading-your-project-to-pypi)
+
+       twine upload dist/*
+
 Remarks
 =======
 
