@@ -70,10 +70,10 @@ For Developers
        python setup.py build_ext
 2. [Build a wheel](https://packaging.python.org/guides/distributing-packages-using-setuptools/#pure-python-wheels)
 
-       python setup.py bdist
+       python setup.py sdist
 3. [Upload](https://packaging.python.org/guides/distributing-packages-using-setuptools/#uploading-your-project-to-pypi)
 
-       twine upload dist/*
+       twine upload dist/pycodec2.*tar.gz
 
 Remarks
 =======
