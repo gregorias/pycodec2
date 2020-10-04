@@ -17,11 +17,25 @@ codec2` so that Codec2's assets land in standard, searchable directories for
 
 ## Instructions
 
-Run:
+You can install the library using PyPI (the easiest option) or from source.
+
+### From PyPI
+
+To install the library from PyPI, run:
+
+    pip install pycodec2
+
+### From Source
+
+To install the library from Source, run:
 
     python setup.py install
 
-to install the library.
+### Codec2 Compatibility
+
+pycodec2 is compatible with codec2 at 0.9.2+ versions. If your codec2 version is older than 0.9.2, then try [pycodec2-old](https://pypi.org/project/pycodec2-old/) package.
+
+For more information on potential compatibility problems, check out [this issue](https://github.com/gregorias/pycodec2/issues/8).
 
 Use
 ===
