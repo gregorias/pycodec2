@@ -7,8 +7,6 @@ cdef extern from 'codec2/codec2.h':
     CODEC2_MODE_1300 = 4
     CODEC2_MODE_1200 = 5
     CODEC2_MODE_700C = 8
-    CODEC2_MODE_450  = 10
-    CODEC2_MODE_450PWB  = 11
   cdef struct CODEC2:
     pass
 

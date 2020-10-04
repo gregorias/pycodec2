@@ -36,12 +36,15 @@ sample.
 1. Convert the .wav to a raw mono-channel 8kHz format, e.g.
 
        sox trashcan.wav -e signed-integer -b 16 trashcan.raw channels 1 rate 8000
-3. Compile pycodec2
+
+2. Compile pycodec2
 
        python setup.py build_ext --inplace
+
 3. Run `example.py`
 
        python example.py trashcan.raw
+
 4. Convert `output.raw`
 
        sox -r 8000 -e signed-integer -b 16 output.raw output.wav
