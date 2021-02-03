@@ -1,0 +1,20 @@
+#!/usr/bin/python
+
+import subprocess
+
+def main():
+    subprocess.run([
+        'sox', 'trashcan.wav', '-e', 'signed-integer', '-b', '16',
+        'trashcan.raw', 'channels', '1', 'rate', '8000'
+    ], check=True)
+    subprocess.run([ 'python', 'setup.py', 'build_ext', '--inplace' ], check=True)
+    subprocess.run([ 'python', 'example.py', 'trashcan.raw' ], check=True)
+    subprocess.run([
+        'sox', '-r', '8000', '-e', 'signed-integer', '-b', '16', 'output.raw',
+        'output.wav'
+    ],
+                   check=True)
+
+
+if __name__ == "__main__":
+    main()

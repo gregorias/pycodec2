@@ -43,20 +43,21 @@ Use
 ## Example
 
 `example.py` implements a basic script that uses codec2 to encode and deencode a
-sample.
+sample. Use the following steps to run an end-2-end scenario (dev/rune2etest
+implements steps 2-5).
 
 1. Download a sample .wav file, e.g.
 [trashcan](https://freesound.org/people/InspectorJ/sounds/431158/).
-1. Convert the .wav to a raw mono-channel 8kHz format, e.g.
+2. Convert the .wav to a raw mono-channel 8kHz format, e.g.
 
        sox trashcan.wav -e signed-integer -b 16 trashcan.raw channels 1 rate 8000
 3. Compile pycodec2
 
        python setup.py build_ext --inplace
-3. Run `example.py`
+4. Run `example.py`
 
        python example.py trashcan.raw
-4. Convert `output.raw`
+5. Convert `output.raw`
 
        sox -r 8000 -e signed-integer -b 16 output.raw output.wav
 
