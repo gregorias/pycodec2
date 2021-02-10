@@ -6,7 +6,7 @@ verify_ssl = true
 [dev-packages]
 grip = "*"
 Cython = "*"
-twine = "*"
+twine = ">=3.3.0"
 numpy = "*"
 
 [packages]
