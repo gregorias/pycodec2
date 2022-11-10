@@ -1,19 +1,23 @@
 Overview
 ========
 
-Pycodec2 is a Cython wrapper for [Codec2][codec2].
+Pycodec2 is a Cython wrapper for [Codec 2][codec2].
 
-In other words, Pycodec2 allows using Codec2 C library from Python.
+In other words, Pycodec2 allows using Codec 2 C library from Python.
 
 Installation
 ============
 
 ## Prerequisites
 
-Pycodec2 requires [Codec2][codec2]. The easiest way to install codec2 on Linux
-is to use the distro's package-manager, e.g. on Arch/Manjaro: `pacman -Syuu
-codec2` so that Codec2's assets land in standard, searchable directories for
-`python setup.py` to use.
+Pycodec2 requires [Codec 2][codec2].
+
+On Linux, I recommend using the distro's package-manager, e.g., on
+Arch/Manjaro: `pacman -Syuu codec2` so that Codec2's assets land in standard,
+searchable directories for `python setup.py` to use.
+
+On macOS, you may use [the Homebrew
+formula](https://formulae.brew.sh/formula/codec2#default).
 
 ## Instructions
 
@@ -27,28 +31,31 @@ To install the library from PyPI, run:
 
 ### From Source
 
-To install the library from Source, run:
+To install the library from source, run:
 
     python setup.py install
 
-### Codec2 Compatibility
+### Codec 2 Compatibility
 
-pycodec2 is compatible with codec2 at 0.9.2+ versions. If your codec2 version is older than 0.9.2, then try [pycodec2-old](https://pypi.org/project/pycodec2-old/) package.
+Pycodec2 is compatible with Codec 2 at 0.9.2+ versions. If your Codec 2 version
+is older than 0.9.2, then try
+[pycodec2-old](https://pypi.org/project/pycodec2-old/) package.
 
-For more information on potential compatibility problems, check out [this issue](https://github.com/gregorias/pycodec2/issues/8).
+For more information on potential compatibility problems, check out [this
+issue](https://github.com/gregorias/pycodec2/issues/8).
 
 Use
 ===
 
 ## Example
 
-`example.py` implements a basic script that uses codec2 to encode and deencode a
-sample. Use the following steps to run an end-2-end scenario (dev/rune2etest
+`example.py` implements a basic script that uses Codec 2 to encode and deencode
+a sample. Use the following steps to run an end-2-end scenario (dev/rune2etest
 implements steps 2-5).
 
-1. Download a sample .wav file, e.g.
+1. Download a sample .wav file, e.g.,
 [trashcan](https://freesound.org/people/InspectorJ/sounds/431158/).
-2. Convert the .wav to a raw mono-channel 8kHz format, e.g.
+2. Convert the .wav to a raw mono-channel 8kHz format, e.g.,
 
        sox trashcan.wav -e signed-integer -b 16 trashcan.raw channels 1 rate 8000
 3. Compile pycodec2
