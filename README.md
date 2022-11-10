@@ -54,7 +54,8 @@ a sample. Use the following steps to run an end-2-end scenario (dev/rune2etest
 implements steps 2-5).
 
 1. Download a sample .wav file, e.g.,
-[trashcan](https://freesound.org/people/InspectorJ/sounds/431158/).
+   [trashcan](https://freesound.org/people/InspectorJ/sounds/431158/).
+
 2. Convert the .wav to a raw mono-channel 8kHz format, e.g.,
 
        sox trashcan.wav -e signed-integer -b 16 trashcan.raw channels 1 rate 8000
