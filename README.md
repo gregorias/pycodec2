@@ -102,6 +102,6 @@ Remarks
 =======
 
 This library is considered complete. Please notify me or send a pull request on
-Github if you notice any bugs.
+GitHub if you notice any bugs.
 
 [codec2]: http://www.rowetel.com/blog/?page_id=452
