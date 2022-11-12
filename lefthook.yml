@@ -1,0 +1,4 @@
+pre-commit:
+  commands:
+    tests:
+      run: "./dev/test"

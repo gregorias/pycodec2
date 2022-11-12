@@ -73,7 +73,7 @@ Now you can listen to `output.wav`.
 
 ## Expected Input Format
 
-[Codec2][codec2] assumes that input files:
+[Codec 2][codec2] assumes that input files:
 * use 8kHz bitrate,
 * 16-bit width samples, and
 * a single channel.
@@ -85,6 +85,13 @@ For a list of currently supported modes, look for `_modes` in
 
 For Developers
 ==============
+
+## Setting up the development environment
+
+1. Install [lefthook](https://github.com/evilmartians/lefthook)
+2. Run
+
+    lefthook install
 
 ## How to Upload to PyPI
 

@@ -1,3 +1,8 @@
 pycodec2/pycodec2.c
 build
 dist
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
