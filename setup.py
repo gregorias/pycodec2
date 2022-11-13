@@ -1,7 +1,7 @@
-from distutils.core import setup
-from distutils.extension import Extension
-from Cython.Distutils import build_ext
+import Cython.Build
+from Cython.Build import cythonize
 import numpy as np
+from setuptools import Extension, setup
 
 VERSION = '2.0.0'
 
@@ -17,6 +17,7 @@ ext_modules = [
               define_macros=[("NPY_NO_DEPRECATED_API", "NPY_1_23_API_VERSION")],
               libraries=["codec2"]) # Unix-like specific
 ]
+
 
 setup(
   name = "pycodec2",
@@ -34,6 +35,6 @@ setup(
                  'Programming Language :: Python :: 3',
                  'Development Status :: 5 - Production/Stable',
                  ],
-  cmdclass = {"build_ext": build_ext},
-  ext_modules = ext_modules
+  ext_modules = cythonize(ext_modules),
+  cmdclass={'build_ext': Cython.Build.build_ext},
 )
