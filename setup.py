@@ -3,7 +3,7 @@ from Cython.Build import cythonize
 import numpy as np
 from setuptools import Extension, setup
 
-VERSION = '2.0.0'
+VERSION = '2.0.1'
 
 ext_modules = [
     Extension("pycodec2",
