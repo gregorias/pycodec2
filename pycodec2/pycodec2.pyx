@@ -44,7 +44,7 @@ cdef class Codec2:
     frames = len(speech_in) // self.samples_per_frame()
     bit_count = frames * self.bits_per_frame()
     bits = b'\x00' * int(math.ceil(bit_count / 8.0))
-    codec2_encode(self._c_codec2_state, bits, <short *>speech_in.data)
+    codec2_encode(self._c_codec2_state, bits, <short*>cnp.PyArray_DATA(speech_in))
     return bits
 
   def decode(self, bytes bits):
@@ -54,7 +54,7 @@ cdef class Codec2:
     frames = int(math.floor((len(bits) * 8.0) / self.bits_per_frame()))
     sample_count = frames * self.samples_per_frame()
     speech_out = np.empty(sample_count, dtype=np.int16, order='C')
-    codec2_decode(self._c_codec2_state, <short *>speech_out.data, bits)
+    codec2_decode(self._c_codec2_state, <short *>(cnp.PyArray_DATA(speech_out)), bits)
     return speech_out
 
   def decode_ber(self, bytes bits, float ber_est):
@@ -64,7 +64,7 @@ cdef class Codec2:
     sample_count = frames * self.samples_per_frame()
     speech_out = np.empty(sample_count, dtype=np.int16, order='C')
     codec2_decode_ber(self._c_codec2_state,
-        <short *>speech_out.data,
+        <short *>(cnp.PyArray_DATA(speech_out)),
         bits,
         ber_est)
     return speech_out
@@ -90,7 +90,7 @@ cdef class Codec2:
     return codec2_get_spare_bit_index(self._c_codec2_state)
 
   def rebuild_spare_bit(self, cnp.ndarray[char, ndim=1] unpacked_bits):
-    return codec2_rebuild_spare_bit(self._c_codec2_state, unpacked_bits.data)
+    return codec2_rebuild_spare_bit(self._c_codec2_state, <char *>cnp.PyArray_DATA(unpacked_bits))
 
   def set_natural_or_gray(self, int gray):
     codec2_set_natural_or_gray(self._c_codec2_state, gray)

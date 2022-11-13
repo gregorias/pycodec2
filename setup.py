@@ -12,7 +12,9 @@ ext_modules = [
                   "pycodec2/pycodec2.pyx",
               ],
               include_dirs=[np.get_include()],
-              define_macros=[("NPY_NO_DEPRECATED_API", "NPY_1_6_API_VERSION")],
+              # This line guarantees that we do not numpy API deprecated in
+              # 1.23.
+              define_macros=[("NPY_NO_DEPRECATED_API", "NPY_1_23_API_VERSION")],
               libraries=["codec2"]) # Unix-like specific
 ]
 
