@@ -4,12 +4,13 @@ import math
 
 import numpy as np
 cimport numpy as cnp
+ctypedef cnp.int8_t CHAR_DTYPE_t
 ctypedef cnp.int16_t SHORT_DTYPE_t
 ctypedef cnp.int_t INT_DTYPE_t
 
 _modes = {
     450  : CODEC2_MODE_450,
-    451  : CODEC2_MODE_450PWB, 
+    451  : CODEC2_MODE_450PWB,
     700  : CODEC2_MODE_700C,
     1200 : CODEC2_MODE_1200,
     1300 : CODEC2_MODE_1300,
@@ -88,9 +89,8 @@ cdef class Codec2:
   def get_spare_bit_index(self):
     return codec2_get_spare_bit_index(self._c_codec2_state)
 
-  def rebuild_spare_bit(self, cnp.ndarray[INT_DTYPE_t, ndim=1] unpacked_bits):
-    return codec2_rebuild_spare_bit(self._c_codec2_state,
-        <int *>unpacked_bits.data)
+  def rebuild_spare_bit(self, cnp.ndarray[char, ndim=1] unpacked_bits):
+    return codec2_rebuild_spare_bit(self._c_codec2_state, unpacked_bits.data)
 
   def set_natural_or_gray(self, int gray):
     codec2_set_natural_or_gray(self._c_codec2_state, gray)

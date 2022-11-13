@@ -32,5 +32,5 @@ cdef extern from 'codec2/codec2.h':
       float beta,
       float gamma)
   int codec2_get_spare_bit_index(CODEC2 *codec2_state)
-  int codec2_rebuild_spare_bit(CODEC2 *codec2_state, int unpacked_bits[])
+  int codec2_rebuild_spare_bit(CODEC2 *codec2_state, char unpacked_bits[])
   void codec2_set_natural_or_gray(CODEC2 *codec2_state, int gray)

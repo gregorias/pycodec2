@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
+# build_ext builds the .so file that unittests can discover it.
 export C_INCLUDE_PATH="${C_INCLUDE_PATH}:$(python3 -c 'import numpy; print(numpy.get_include())')" && \
 python3 setup.py build_ext -i && \
 mypy test && \
 python -m unittest discover -s test/ -t .
-rm pycodec2.*.so
+rm -f pycodec2.*.so
