@@ -3,7 +3,7 @@ from distutils.extension import Extension
 from Cython.Distutils import build_ext
 import numpy as np
 
-VERSION = '1.0.5'
+VERSION = '2.0.0'
 
 ext_modules = [
     Extension("pycodec2",

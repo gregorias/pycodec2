@@ -37,8 +37,11 @@ To install the library from source, run:
 
 ### Codec 2 Compatibility
 
-Pycodec2 is compatible with Codec 2 at 0.9.2+ versions. If your Codec 2 version
-is older than 0.9.2, then try
+Pycodec2 2.* is compatible with Codec 2 1.0.*.
+
+Pycodec2 1.0.* is compatible with Codec 2 at 0.9.2+ versions.
+
+If your Codec 2 version is older than 0.9.2, then try
 [pycodec2-old](https://pypi.org/project/pycodec2-old/) package.
 
 For more information on potential compatibility problems, check out [this
