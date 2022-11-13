@@ -1,3 +1,6 @@
+#cython: language_level=3
+# The language level specification is needed. I don't have it in my build file,
+# so I use it per-module.
 from codec2 cimport *
 
 import math
