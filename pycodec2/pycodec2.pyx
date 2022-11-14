@@ -50,25 +50,25 @@ cdef class Codec2:
     codec2_encode(self._c_codec2_state, bits, <short*>cnp.PyArray_DATA(speech_in))
     return bits
 
-  def decode(self, bytes bits):
+  def decode(self, bytes frames):
     '''Decode a byte array into an ndarray of samples'''
-    assert (len(bits) * 8) >= self.bits_per_frame()
+    assert len(frames) >= self.bytes_per_frame()
     cdef cnp.ndarray[SHORT_DTYPE_t, ndim=1] speech_out
-    frames = int(math.floor((len(bits) * 8.0) / self.bits_per_frame()))
-    sample_count = frames * self.samples_per_frame()
+    frame_count = int(math.floor(len(frames) / self.bytes_per_frame()))
+    sample_count = frame_count * self.samples_per_frame()
     speech_out = np.empty(sample_count, dtype=np.int16, order='C')
-    codec2_decode(self._c_codec2_state, <short *>(cnp.PyArray_DATA(speech_out)), bits)
+    codec2_decode(self._c_codec2_state, <short *>(cnp.PyArray_DATA(speech_out)), frames)
     return speech_out
 
-  def decode_ber(self, bytes bits, float ber_est):
-    assert (len(bits) * 8) >= self.bits_per_frame()
+  def decode_ber(self, bytes frames, float ber_est):
+    assert len(frames) >= self.bytes_per_frame()
     cdef cnp.ndarray[SHORT_DTYPE_t, ndim=1] speech_out
-    frames = (len(bits) * 8) // self.bits_per_frame()
-    sample_count = frames * self.samples_per_frame()
+    frame_count = len(frames) // self.bytes_per_frame()
+    sample_count = frame_count * self.samples_per_frame()
     speech_out = np.empty(sample_count, dtype=np.int16, order='C')
     codec2_decode_ber(self._c_codec2_state,
         <short *>(cnp.PyArray_DATA(speech_out)),
-        bits,
+        frames,
         ber_est)
     return speech_out
 
@@ -77,6 +77,9 @@ cdef class Codec2:
 
   def bits_per_frame(self):
     return codec2_bits_per_frame(self._c_codec2_state)
+
+  def bytes_per_frame(self):
+    return codec2_bytes_per_frame(self._c_codec2_state)
 
   def set_lpc_post_filter(self,
       int enable,
@@ -98,3 +101,30 @@ cdef class Codec2:
   def set_natural_or_gray(self, int gray):
     codec2_set_natural_or_gray(self._c_codec2_state, gray)
 
+  def set_softdec(self, float softdec):
+    codec2_set_softdec(self._c_codec2_state, &softdec)
+
+  def get_energy(self,  cnp.ndarray[unsigned char, ndim=1] bits):
+      return codec2_get_energy(self._c_codec2_state, <unsigned char*>(cnp.PyArray_DATA(bits)))
+
+  # support for ML and VQ experiments
+  def open_mlfeat(self, bytearray feat_filename, bytearray model_filename):
+      codec2_open_mlfeat(self._c_codec2_state, feat_filename, model_filename)
+
+  def load_codebook(self, bytearray feat_filename, int num, bytearray filename):
+      codec2_load_codebook(self._c_codec2_state, num, filename)
+
+  def get_var(self):
+      return codec2_get_var(self._c_codec2_state)
+
+  def enable_user_ratek(self):
+      cdef int K
+      cdef float *user_rate_k = codec2_enable_user_ratek(self._c_codec2_state, &K)
+      return (user_rate_k[0], K)
+
+  # 700C post filter and equaliser
+  def post_filter_700c(self, int en):
+      codec2_700c_post_filter(self._c_codec2_state, en)
+
+  def eq_700c(self, int en):
+      codec2_700c_eq(self._c_codec2_state, en)
