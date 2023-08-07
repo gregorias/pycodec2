@@ -1,4 +1,9 @@
 pre-commit:
+  parallel: true
   commands:
     tests:
       run: "./dev/test"
+    markdownlint:
+      tags: documentation style
+      glob: '*.md'
+      run: markdownlint {staged_files}
