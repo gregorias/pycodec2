@@ -11,3 +11,7 @@ pre-commit:
       tags: style
       glob: "*.toml"
       run: taplo check {staged_files}
+commit-msg:
+  commands:
+    commitlint:
+      run: commitlint --edit={1}
