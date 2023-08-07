@@ -7,3 +7,7 @@ pre-commit:
       tags: documentation style
       glob: '*.md'
       run: markdownlint {staged_files}
+    toml-taplo-lint:
+      tags: style
+      glob: "*.toml"
+      run: taplo check {staged_files}
