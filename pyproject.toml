@@ -1,7 +1,29 @@
+# This file is necessary for the build system as it specifies the build-time
+# dependencies.
+# You need to keep it in sync with development dependencies specified in
+# Pipfile.
 [build-system]
 requires = [
-  "numpy",
-  "setuptools",
-  "wheel",
-  "Cython"
+  "Cython==3.*",
+  "numpy==1.26.*",
+  "setuptools"
+]
+
+# Required table with required fields: https://peps.python.org/pep-0621/#table-name.
+[project]
+name = "pycodec2"
+version = "2.1.0"
+description = "A Cython wrapper for codec2"
+readme = "README.md"
+
+# Authors are defined in setup.py.
+# https://discuss.python.org/t/adding-extra-fields-in-the-pyproject-toml-authors-maintainers-list/16848/3
+dynamic = ["authors"]
+
+keywords = ["codec2", "audio", "voice", "speech"]
+classifiers=[
+  'Topic :: Multimedia :: Sound/Audio :: Speech',
+  'License :: OSI Approved :: BSD License',
+  'Programming Language :: Python :: 3',
+  'Development Status :: 5 - Production/Stable',
 ]

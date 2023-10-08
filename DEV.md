@@ -15,6 +15,17 @@ lefthook install
 pipenv install --dev
 ```
 
+## Building
+
+This section explains how to build
+[a wheel](https://realpython.com/python-wheels/) of this package.
+
+1. Run
+
+```bash
+python -m build --wheel
+```
+
 ## How to Upload to PyPI
 
 1. [Run `build_ext`](https://stackoverflow.com/a/4515279/915552)

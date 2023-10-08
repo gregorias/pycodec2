@@ -4,6 +4,7 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+build = "*"
 grip = ">=4.6.1"
 Cython = ">=0.29.32"
 twine = ">=3.3.0"
