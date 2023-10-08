@@ -5,12 +5,20 @@ pre-commit:
       run: "./dev/test"
     markdownlint:
       tags: documentation style
-      glob: '*.md'
+      glob: "*.md"
       run: markdownlint {staged_files}
     toml-taplo-lint:
       tags: style
       glob: "*.toml"
       run: taplo check {staged_files}
+    yaml-prettier:
+      tags: style
+      glob: "*.{yml,yaml}"
+      run: prettier -c {staged_files}
+    yapf:
+      tags: style
+      glob: "*.py"
+      run: yapf -i -r {staged_files} && git add {staged_files}
 commit-msg:
   commands:
     commitlint:
