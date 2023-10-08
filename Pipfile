@@ -4,12 +4,15 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-build = "*"
+build = "==1.*"
 grip = ">=4.6.1"
-Cython = ">=0.29.32"
+Cython = "==3.*,>=3.0.3"
 twine = ">=3.3.0"
 mypy = "*"
-numpy = ">=1.23.4"
+numpy = "==1.26.*"
+setuptools = "*"
+# These are for types for development only.
+types-setuptools = "*"
 
 [packages]
 
