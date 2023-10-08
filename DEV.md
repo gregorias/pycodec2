@@ -26,6 +26,8 @@ This section explains how to build
 python -m build --wheel
 ```
 
+This builds a wheel file and saves it in `dist/`.
+
 ## How to Upload to PyPI
 
 1. [Run `build_ext`](https://stackoverflow.com/a/4515279/915552)
