@@ -28,6 +28,13 @@ classifiers=[
   'Development Status :: 5 - Production/Stable',
 ]
 
+# Necessary for cibuildwheel not to use an old python that may have old
+# libraries. E.g., python 3.6 does not have numpy 1.26.
+# https://cibuildwheel.readthedocs.io/en/stable/options/#requires-python
+#
+# Using at least Python 3.9, because as of 2023-09, 3.8 is outdated.
+requires-python = ">=3.9"
+
 # Use-time dependencies.
 dependencies = [
   # The package will error out on import if these are not installed.

@@ -1,0 +1,49 @@
+name: Build
+on: workflow_dispatch
+env:
+  # cibuildwheel on linux runs in a container.
+  # Codec2 is required for the build process, so instruct cibuildwheel to install it.
+  CIBW_BEFORE_ALL_LINUX: yum install -y codec2-devel
+  # Don't support x86, because I had problems getting a successful build.
+  CIBW_ARCHS_LINUX: x86_64
+  # Don't support musllinux, because Alpine Linux doesn't have codec2.
+  # I would have to add manual installation instructions for it in
+  # CIBW_BEFORE_ALL. Unless someone complains, it's not worth it.
+  #
+  # Don't support pp10, because I couldn't get it to build. Numpy
+  # complains about missing BLAS.
+  CIBW_SKIP: "*musllinux* pp310*"
+jobs:
+  build_wheels:
+    name: Build wheels on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        # Supported runners: https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
+        # Not supporting Windows, because there's no codec2 package for Windows' package manager.
+        os: [ubuntu-22.04, macOS-13]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Used to host cibuildwheel
+      # https://github.com/actions/setup-python
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+      - name: Install cibuildwheel
+        run: python -m pip install cibuildwheel==2.16.2
+
+      - name: Install codec2 on macOS
+        if: matrix.os == 'macOS-13'
+        run: |
+          brew update
+          brew install codec2
+
+      - name: Build wheels
+        run: python -m cibuildwheel --output-dir wheelhouse
+
+      - uses: actions/upload-artifact@v3
+        with:
+          path: ./wheelhouse/*.whl
