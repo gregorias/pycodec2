@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
+#
+# This test builds a package, installs it in a temporary virtual environment,
+# and runs the unit tests.
 
-# build_ext builds the .so file that unittests can discover it.
-export C_INCLUDE_PATH="${C_INCLUDE_PATH}:$(python3 -c 'import numpy; print(numpy.get_include())')" && \
-python3 setup.py build_ext -i && \
-mypy test && \
-python -m unittest discover -s test/ -t .
-rm -f pycodec2.*.so
+python -m build --wheel && \
+TEST_VENV=$(mktemp -d) && \
+python -m venv $TEST_VENV && \
+$TEST_VENV/bin/pip install dist/*.whl && \
+cd test && \
+$TEST_VENV/bin/python -m unittest discover -s .
+TEST_RESULT=$?
+rm -r $TEST_VENV
+exit $TEST_RESULT

@@ -7,7 +7,7 @@ import numpy as np
 # https://setuptools.pypa.io/en/latest/userguide/ext_modules.html.
 ext_modules = [
     Extension(
-        "pycodec2",
+        "pycodec2.pycodec2",
         [
             "pycodec2/pycodec2.pyx",
         ],

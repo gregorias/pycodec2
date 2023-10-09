@@ -1,9 +1,6 @@
 pre-commit:
   parallel: true
   commands:
-    # Test that the package compiles.
-    build:
-      run: "python -m build --wheel"
     tests:
       run: "./dev/test"
     markdownlint:

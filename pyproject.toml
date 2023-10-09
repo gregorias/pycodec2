@@ -27,3 +27,9 @@ classifiers=[
   'Programming Language :: Python :: 3',
   'Development Status :: 5 - Production/Stable',
 ]
+
+# Use-time dependencies.
+dependencies = [
+  # The package will error out on import if these are not installed.
+  "numpy>=1.22",
+]
