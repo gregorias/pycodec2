@@ -11,7 +11,7 @@ In other words, Pycodec2 allows using the Codec 2 C library from Python.
 Pycodec2 requires [Codec 2][codec2].
 
 On Linux, I recommend using the distro's package-manager, e.g., on
-Arch/Manjaro: `pacman -Syuu codec2` so that Codec2's assets land in standard,
+Arch/Manjaro: `pacman -Syuu codec2`, so that Codec2's assets land in standard
 searchable directories for `python setup.py` to use.
 
 On macOS, you may use [the Homebrew
@@ -31,13 +31,16 @@ pip install pycodec2
 
 ### From Source
 
-To install the library from source, run:
+To install the library from source, see building instructions in `DEV.md`. You
+can then install the wheel with:
 
 ```bash
-python setup.py install
+pip install dist/*.whl
 ```
 
 ### Codec 2 Compatibility
+
+Current source is compatible with Codec 2 1.2.\*.
 
 Pycodec2 2.\* is compatible with Codec 2 1.0.\*.
 
