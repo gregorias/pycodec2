@@ -15,10 +15,11 @@ lefthook install
 pipenv install --dev
 ```
 
-## Building
+## Local Build
 
 This section explains how to build
-[a wheel](https://realpython.com/python-wheels/) of this package.
+[a wheel](https://realpython.com/python-wheels/) of this package on your local
+machine.
 
 1. Run
 
@@ -28,19 +29,15 @@ python -m build --wheel
 
 This builds a wheel file and saves it in `dist/`.
 
-## How to Upload to PyPI
+## Build, Release & Publish
 
-1. [Run `build_ext`](https://stackoverflow.com/a/4515279/915552)
+This section explains how to create a release (build sdist and wheel files of a
+version) and publish to GitHub and PyPI.
 
-   python setup.py build_ext
-
-2. [Build a wheel](https://packaging.python.org/guides/distributing-packages-using-setuptools/#pure-python-wheels)
-
-   python setup.py sdist
-
-3. [Upload](https://packaging.python.org/guides/distributing-packages-using-setuptools/#uploading-your-project-to-pypi)
-
-   twine upload dist/pycodec2.*tar.gz
+1. Run the build GitHub action.
+2. Fetch the built artifacts and unpack.
+3. Run `twine upload ARTIFACTS`.
+4. Run `gh release create VERSION`.
 
 ## ADRs
 
