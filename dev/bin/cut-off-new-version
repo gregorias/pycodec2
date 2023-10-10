@@ -16,7 +16,7 @@ switch $confirm
         echo "Aborting due to lack of confirmation (user input was $confirm)."
         exit 0
 end
-set NEW_VERSION (poetry version | cut -d' ' -f2)
+set NEW_VERSION (toml get --toml-path pyproject.toml project.version) || exit 1
 and echo "New version: $NEW_VERSION."
 git add pyproject.toml
 and echo "Committing the new version."
