@@ -1,0 +1,27 @@
+#!/usr/bin/env fish
+#
+# This script creates a new version of the project on GitHub.
+
+set OLD_VERSION (poetry version | cut -d' ' -f2)
+or begin
+  echo "Could not get the current version. Aborting."
+  exit 0
+end
+
+echo "Bump up the new version in pyproject.toml. Once done, confirm [y/n]":
+read confirm
+switch $confirm
+    case y
+    case '*'
+        echo "Aborting due to lack of confirmation (user input was $confirm)."
+        exit 0
+end
+set NEW_VERSION (poetry version | cut -d' ' -f2)
+and echo "New version: $NEW_VERSION."
+git add pyproject.toml
+and echo "Committing the new version."
+and git commit -m 'chore: release'
+and git push
+and echo "Tagging the new version."
+and git tag v$NEW_VERSION
+and git push origin v$NEW_VERSION
