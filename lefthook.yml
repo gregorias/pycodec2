@@ -3,6 +3,10 @@ pre-commit:
   commands:
     tests:
       run: "./dev/test"
+    codec2-integration--tests:
+      run: |
+        docker build -t codec2-integration-tests -f - .. < Dockerfile
+        docker run codec2-integration-tests:latest bash ./pycodec2/codec2-integration-tests/test.sh
     markdownlint:
       tags: documentation style
       glob: "*.md"

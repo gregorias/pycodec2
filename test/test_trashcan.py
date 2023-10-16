@@ -11,8 +11,21 @@ import numpy as np
 import pycodec2
 
 TEST_DATA_DIR = path.join(path.dirname(path.realpath(__file__)), 'data')
+TRASHCAN_GOLDEN_FILES = [
+    path.join(TEST_DATA_DIR, f) for f in [
+        './trashcan-1200-decoded-macos.raw',
+        './trashcan-1200-decoded-ubuntu.raw'
+    ]
+]
+
+
+def read_file(filename: str) -> bytes:
+    with open(filename, 'rb') as f:
+        return f.read()
+
 
 class TrashcanTestCase(unittest.TestCase):
+
     def test_encodes_and_decodes_trashcan(self):
         c2 = pycodec2.Codec2(1200)
         with io.BytesIO() as output:
@@ -29,7 +42,7 @@ class TrashcanTestCase(unittest.TestCase):
                     encoded = c2.encode(packet)
                     packet = c2.decode(encoded)
                     output.write(struct.pack(STRUCT_FORMAT, *packet))
-
             output.seek(0)
-            with open(path.join(TEST_DATA_DIR, 'trashcan-1200-decoded.raw'), 'rb') as expected_output:
-                self.assertEqual(output.read(), expected_output.read())
+
+            self.assertIn(output.read(),
+                          [read_file(f) for f in TRASHCAN_GOLDEN_FILES])
