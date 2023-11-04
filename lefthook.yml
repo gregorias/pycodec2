@@ -5,6 +5,7 @@ pre-commit:
       run: "./dev/test"
     codec2-integration--tests:
       run: |
+        cd codec2-integration-tests
         docker build -t codec2-integration-tests -f - .. < Dockerfile
         docker run codec2-integration-tests:latest bash ./pycodec2/codec2-integration-tests/test.sh
     markdownlint:
