@@ -3,7 +3,7 @@ pre-commit:
   commands:
     tests:
       run: "./dev/test"
-    codec2-integration--tests:
+    codec2-integration-tests:
       run: |
         cd codec2-integration-tests
         docker build -t codec2-integration-tests -f - .. < Dockerfile
