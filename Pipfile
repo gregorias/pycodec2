@@ -11,6 +11,8 @@ setuptools = "*"
 build = "==1.*"
 mypy = "*"
 twine = ">=3.3.0"
+# For fetching the current version from pyproject.toml.
+toml = "*"
 # These are for types for development only.
 types-setuptools = "*"
 

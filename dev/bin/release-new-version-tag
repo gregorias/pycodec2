@@ -1,0 +1,35 @@
+#!/usr/bin/env fish
+#
+# This script releases a new version of the project.
+
+function echo_version
+    python -c "import toml; print(toml.load('pyproject.toml')['project']['version'])"
+end
+
+
+set OLD_VERSION (echo_version)
+or begin
+    echo "Could not get the current version. Aborting."
+    exit 0
+end
+
+echo "The current version is $OLD_VERSION."
+echo "Bump up the new version in pyproject.toml. Once done, confirm [y/n]:"
+read confirm
+switch $confirm
+    case y
+    case '*'
+        echo "Aborting due to lack of confirmation (user input was $confirm)."
+        exit 0
+end
+set NEW_VERSION (echo_version)
+and echo "The new version is $NEW_VERSION."
+
+echo "Tagging and pushing the new version."
+git add pyproject.toml
+and echo "Committing the new version."
+and git commit -m "chore: release $NEW_VERSION"
+and git push
+and echo "Tagging the new version."
+and git tag v$NEW_VERSION
+and git push origin v$NEW_VERSION

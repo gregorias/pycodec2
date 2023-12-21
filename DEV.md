@@ -31,13 +31,20 @@ This builds a wheel file and saves it in `dist/`.
 
 ## Build, Release & Publish
 
-This section explains how to create a release (build sdist and wheel files of a
-version) and publish to GitHub and PyPI.
+A version release consists of producing the following artifacts:
 
-1. Run the build GitHub action.
-2. Fetch the built artifacts and unpack.
-3. Run `twine upload ARTIFACTS`.
-4. Run `gh release create VERSION`.
+1. Tagging a commit with a version string (`vx.y.z`).
+2. Uploading the package's wheels and an sdist archive to:
+    1. PyPI
+    2. GitHub Releases
+
+To create a release, run the following steps:
+
+1. Run `dev/bin/release-new-version-tag`
+2. Run the build GitHub action.
+3. Fetch the built artifacts and unpack.
+4. Run `twine upload pycodec2-$VERSION*`.
+5. Run `gh release create v$VERSION pycodec2-$VERSION*`.
 
 ## ADRs
 
