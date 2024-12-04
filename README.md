@@ -40,6 +40,8 @@ pip install dist/*.whl
 
 ### Codec 2 Compatibility
 
+Pycodec2 4.\* is compatible with Codec 2 1.2.\* and Numpy 2.\*.
+
 Pycodec2 3.\* is compatible with Codec 2 1.2.\*.
 
 Pycodec2 2.\* is compatible with Codec 2 1.0.\*.

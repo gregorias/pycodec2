@@ -9,7 +9,6 @@ import numpy as np
 cimport numpy as cnp
 ctypedef cnp.int8_t CHAR_DTYPE_t
 ctypedef cnp.int16_t SHORT_DTYPE_t
-ctypedef cnp.int_t INT_DTYPE_t
 
 cnp.import_array()
 

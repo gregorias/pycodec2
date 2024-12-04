@@ -15,8 +15,8 @@ ext_modules = [
         # for array types. Without this line, the build will fail.
         include_dirs=[np.get_include()],
         # This line guarantees that we do not use the numpy API
-        # deprecated in 1.23.
-        define_macros=[("NPY_NO_DEPRECATED_API", "NPY_1_23_API_VERSION")],
+        # deprecated in 1.26.
+        define_macros=[("NPY_NO_DEPRECATED_API", "NPY_1_26_API_VERSION")],
         # The list of libraries to link against.
         # Not including this line, will cause an error upon using pycodec2:
         # > ImportError: dlopen(/Users/grzesiek/Code/pycodec2-202310/build/lib.macosx-13.3-arm64-cpython-311/pycodec2.cpython-311-darwin.so, 0x0002):

@@ -5,12 +5,12 @@ verify_ssl = true
 
 # Keep these in sync with pyproject.toml.
 [dev-packages]
-Cython = "==3.*,>=3.0.3"
-numpy = "==1.26.*"
+Cython = "==3.*,>=3.0.11"
+numpy = "==2.1.*"
 setuptools = "*"
 build = "==1.*"
 mypy = "*"
-twine = ">=3.3.0"
+twine = ">=6.0.1"
 # For fetching the current version from pyproject.toml.
 toml = "*"
 # These are for types for development only.

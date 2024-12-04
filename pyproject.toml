@@ -5,7 +5,7 @@
 [build-system]
 requires = [
   "Cython==3.*",
-  "numpy==1.26.*",
+  "numpy==2.1.*",
   "setuptools"
 ]
 
@@ -38,5 +38,5 @@ requires-python = ">=3.9"
 # Use-time dependencies.
 dependencies = [
   # The package will error out on import if these are not installed.
-  "numpy>=1.22, <2.0.0",
+  "numpy>=2.00, <3.0.0",
 ]
