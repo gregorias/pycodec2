@@ -1,1 +1,3 @@
 include pycodec2/pycodec2.c
+include pycodec2/pycodec2.pyx
+include pycodec2/codec2.pxd
