@@ -38,5 +38,5 @@ requires-python = ">=3.9"
 # Use-time dependencies.
 dependencies = [
   # The package will error out on import if these are not installed.
-  "numpy>=1.22",
+  "numpy>=1.22, <2.0.0",
 ]
