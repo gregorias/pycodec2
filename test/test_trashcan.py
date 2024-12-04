@@ -1,10 +1,9 @@
 """E2e test cases that encode and decodes a trashcan file."""
-import unittest
-
 import io
 import os.path as path
-from pathlib import Path
 import struct
+import unittest
+from pathlib import Path
 
 import numpy as np
 
@@ -14,6 +13,7 @@ TEST_DATA_DIR = path.join(path.dirname(path.realpath(__file__)), 'data')
 TRASHCAN_GOLDEN_FILES = [
     path.join(TEST_DATA_DIR, f) for f in [
         './trashcan-1200-decoded-macos.raw',
+        './trashcan-1200-decoded-macos15-m3.raw',
         './trashcan-1200-decoded-ubuntu.raw'
     ]
 ]

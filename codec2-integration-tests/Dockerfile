@@ -1,5 +1,5 @@
 # Use Ubuntu instead of Alpine, because it has more familiar tools included.
-FROM ubuntu:23.10
+FROM ubuntu:24.04
 WORKDIR /root
 RUN apt-get update
 RUN apt-get install -y cmake git

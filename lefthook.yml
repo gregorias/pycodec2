@@ -2,7 +2,7 @@ pre-commit:
   parallel: true
   commands:
     tests:
-      run: "./dev/test"
+      run: "./dev/bin/test"
     codec2-integration-tests:
       run: |
         cd codec2-integration-tests
