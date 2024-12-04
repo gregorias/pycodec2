@@ -65,7 +65,7 @@ jobs:
           cd build_linux &&
           cmake .. &&
           make &&
-          make install
+          sudo make install
           # brew update
           # brew install codec2
 
