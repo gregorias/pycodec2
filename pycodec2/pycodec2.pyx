@@ -11,6 +11,8 @@ ctypedef cnp.int8_t CHAR_DTYPE_t
 ctypedef cnp.int16_t SHORT_DTYPE_t
 ctypedef cnp.int_t INT_DTYPE_t
 
+cnp.import_array()
+
 _modes = {
     700  : CODEC2_MODE_700C,
     1200 : CODEC2_MODE_1200,
