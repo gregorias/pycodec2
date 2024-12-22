@@ -24,7 +24,6 @@ ext_modules = [
         # > symbol not found in flat namespace '_codec2_700c_eq'
         library_dirs=["lib_win"] if sys.platform == "win32" else None,
         libraries=["libcodec2"] if sys.platform == "win32" else ["codec2"],
-        # extra_link_args=["/VERBOSE"], # only works with MSVC
     )
 ]
 

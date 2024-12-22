@@ -1,5 +1,5 @@
 name: Build
-on: [workflow_dispatch, push]
+on: workflow_dispatch
 env:
   # Codec2 is required for the build process, so instruct cibuildwheel to
   # install the currently supported version.
@@ -12,11 +12,11 @@ env:
     cmake .. &&
     make &&
     make install
-
+  # Don't support x86, because I had problems getting a successful build.
   CIBW_ARCHS_LINUX: x86_64
   # A smoke test for each wheel.
   CIBW_TEST_COMMAND: >
-    python -c "import sys;print(sys.path);import pycodec2"
+    python -c "import pycodec2"
 jobs:
   build_sdist:
     name: Build sdist
@@ -131,13 +131,8 @@ jobs:
   build_wheels_windows:
     needs:
       - cross_compile_windows
-    name: Build wheels on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        # Supported runners: https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
-        os: [windows-latest]
-
+    name: Build wheels on windows-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
 
