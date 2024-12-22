@@ -12,7 +12,7 @@ requires = [
 # Required table with required fields: https://peps.python.org/pep-0621/#table-name.
 [project]
 name = "pycodec2"
-version = "4.0.0"
+version = "4.0.1"
 description = "A Cython wrapper for codec2"
 readme = "README.md"
 
