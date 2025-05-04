@@ -12,8 +12,7 @@ env:
     cmake .. &&
     make &&
     make install
-  # Don't support x86, because I had problems getting a successful build.
-  CIBW_ARCHS_LINUX: x86_64
+  CIBW_ARCHS_LINUX: native
   # A smoke test for each wheel.
   CIBW_TEST_COMMAND: >
     python -c "import pycodec2"
@@ -41,8 +40,8 @@ jobs:
     strategy:
       matrix:
         # Supported runners: https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
-        # Not supporting Windows, because there's no codec2 package for Windows' package manager.Use cross compilation to support windows
-        os: [ubuntu-24.04, macos-13, macos-14]
+        # Not supporting Windows, because there's no codec2 package for Windows' package manager. Use cross compilation to support windows
+        os: [ubuntu-24.04, ubuntu-24.04-arm, macos-13, macos-14]
 
     steps:
       - uses: actions/checkout@v4
