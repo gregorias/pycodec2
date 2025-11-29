@@ -13,6 +13,10 @@ env:
     make &&
     make install
   CIBW_ARCHS_LINUX: native
+  # auditwheel gives library "libcodec2.so.1.2" could not be located without it.
+  # https://github.com/pypa/cibuildwheel/issues/1981#issuecomment-3592353976
+  CIBW_ENVIRONMENT_LINUX: LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib64
+
   # A smoke test for each wheel.
   CIBW_TEST_COMMAND: >
     python -c "import pycodec2"
@@ -53,7 +57,7 @@ jobs:
           python-version: "3.14"
 
       - name: Install cibuildwheel
-        run: python -m pip install cibuildwheel==2.22.0
+        run: python -m pip install cibuildwheel==3.0.0
 
       - name: Install codec2 on macOS
         if: contains(matrix.os, 'macos')
@@ -142,7 +146,7 @@ jobs:
           python-version: "3.14"
 
       - name: Install cibuildwheel
-        run: python -m pip install cibuildwheel==2.22.0
+        run: python -m pip install cibuildwheel==3.0.0
 
       - name: Download libs for windows
         uses: actions/download-artifact@v6
