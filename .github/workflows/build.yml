@@ -21,7 +21,7 @@ jobs:
     name: Build sdist
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: actions/setup-python@v5
         with:
           python-version: "3.13"
@@ -44,7 +44,7 @@ jobs:
         os: [ubuntu-24.04, ubuntu-24.04-arm, macos-13, macos-14]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       # Used to host cibuildwheel
       # https://github.com/actions/setup-python
@@ -81,7 +81,7 @@ jobs:
     name: cross compile windows on ubuntu
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: build_linux
         run: |
@@ -133,7 +133,7 @@ jobs:
     name: Build wheels on windows-latest
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       # Used to host cibuildwheel
       # https://github.com/actions/setup-python
@@ -169,7 +169,6 @@ jobs:
         with:
           name: pycodec2-windows
           path: ./wheelhouse/*.whl
-
 
   merge:
     runs-on: ubuntu-latest
