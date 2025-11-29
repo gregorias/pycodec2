@@ -41,7 +41,7 @@ jobs:
       matrix:
         # Supported runners: https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
         # Not supporting Windows, because there's no codec2 package for Windows' package manager. Use cross compilation to support windows
-        os: [ubuntu-24.04, ubuntu-24.04-arm, macos-13, macos-14]
+        os: [ubuntu-24.04, ubuntu-24.04-arm, macos-14, macos-15]
 
     steps:
       - uses: actions/checkout@v6
