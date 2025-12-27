@@ -46,6 +46,13 @@ To create a release, run the following steps:
 4. Run `twine upload pycodec2-$VERSION*`.
 5. Run `gh release create v$VERSION pycodec2-$VERSION*`.
 
+## Maintenance Checklist
+
+- [ ] Update dependencies in codec2-integration-tests.
+- [ ] Update dependencies in `.github/workflows/build.yml`.
+- [ ] Update Pipenv’s Python.
+- [ ] Release the new build.
+
 ## ADRs
 
 ### Pipenv vs Poetry

@@ -1,5 +1,9 @@
 # Pycodec2
 
+> [!WARNING]
+> This project is no longer maintained.
+> If you’d like updates, consider forking it.
+
 Pycodec2 is a Cython wrapper for [Codec 2][codec2].
 
 In other words, Pycodec2 allows using the Codec 2 C library from Python.
